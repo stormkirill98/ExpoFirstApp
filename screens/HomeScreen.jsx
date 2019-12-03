@@ -8,11 +8,14 @@ export default class HomeScreen extends Component{
         super(props);
 
         this.pressOnSend = this.pressOnSend.bind(this)
+        this.pressOnClear = this.pressOnClear.bind(this)
     }
 
     pressOnSend() {
-        let inputFirstName = this.inputFirstName;
-        if (inputFirstName) inputFirstName.setErrorMsg("error");
+    }
+
+    pressOnClear() {
+        if (this.inputFirstName) this.inputFirstName.clear();
     }
 
     render() {
@@ -32,13 +35,15 @@ export default class HomeScreen extends Component{
                     </View>
 
                     <View style={styles.mainContent}>
-                        <InputField name={'First Name'} placeholder={'Enter first name'}
-                                    ref={component => this.inputFirstName = component}/>
+                        <InputField name={'First Name'}
+                                    placeholder={'Enter first name'}
+                                    ref={el => this.inputFirstName = el}/>
 
                         <View style={styles.buttons}>
                             <Button
                                 title="Clear"
                                 style={styles.clearBtn}
+                                onPress={this.pressOnClear}
                             />
 
                             <Button

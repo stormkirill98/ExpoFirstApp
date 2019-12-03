@@ -8,14 +8,18 @@ export default class InputField extends Component {
 
         this.state = {errorMsg: ''};
 
-        // this is where we do the binding
-        this.setErrorMsg = this.setErrorMsg.bind(this)
+        this.setErrorMsg = this.setErrorMsg.bind(this);
+        this.clear = this.clear.bind(this);
     }
 
     setErrorMsg(errorMsg) {
         this.setState({
             errorMsg: errorMsg
         })
+    }
+
+    clear() {
+        if (this.input) this.input.clear();
     }
 
     render() {
@@ -25,6 +29,7 @@ export default class InputField extends Component {
                 <Input
                     placeholder={this.props.placeholder}
                     errorMessage={this.state.errorMsg}
+                    ref={el => this.input = el}
                 />
             </View>
         );
