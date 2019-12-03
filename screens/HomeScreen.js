@@ -1,7 +1,6 @@
 import React from 'react';
-import {Image, Platform, ScrollView, StyleSheet, Text, View,} from 'react-native';
-
-import {MonoText} from '../components/StyledText';
+import {Image, Platform, ScrollView, StyleSheet, View,} from 'react-native';
+import { Input } from 'react-native-elements';
 
 export default function HomeScreen() {
     return (
@@ -21,7 +20,9 @@ export default function HomeScreen() {
                 </View>
 
                 <View style={styles.getStartedContainer}>
-
+                    <Input
+                        placeholder='BASIC INPUT'
+                    />
                 </View>
             </ScrollView>
         </View>
