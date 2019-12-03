@@ -1,7 +1,7 @@
 import React from 'react';
 import {Image, ScrollView, StyleSheet, View,} from 'react-native';
-import {Button, Input, Text} from 'react-native-elements';
-import {InputField} from "../components/InputField";
+import {Button} from 'react-native-elements';
+import InputField from "../components/InputField";
 
 export default function HomeScreen() {
     return (
@@ -33,12 +33,18 @@ export default function HomeScreen() {
                         <Button
                             title="Send"
                             style={styles.sendBtn}
+                            onPress={pressOnSend}
                         />
                     </View>
                 </View>
             </ScrollView>
         </View>
     );
+
+}
+
+function pressOnSend() {
+
 }
 
 HomeScreen.navigationOptions = {
