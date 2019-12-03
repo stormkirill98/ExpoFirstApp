@@ -1,6 +1,7 @@
 import React from 'react';
 import {Image, ScrollView, StyleSheet, View,} from 'react-native';
-import {Button, Input} from 'react-native-elements';
+import {Button, Input, Text} from 'react-native-elements';
+import {InputField} from "../components/InputField";
 
 export default function HomeScreen() {
     return (
@@ -20,17 +21,8 @@ export default function HomeScreen() {
                 </View>
 
                 <View style={styles.mainContent}>
-                    <Input
-                        placeholder='Enter first name'
-                    />
 
-                    <Input
-                        placeholder='Enter last name'
-                    />
-
-                    <Input
-                        placeholder='Enter age name'
-                    />
+                    <InputField name={'First Name'} placeholder={'Enter first name'}/>
 
                     <View style={styles.buttons}>
                         <Button
@@ -77,6 +69,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         marginHorizontal: 50,
     },
+
     buttons: {
         flexDirection: 'row',
         margin: 10
