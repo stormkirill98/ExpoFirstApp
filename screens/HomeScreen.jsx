@@ -6,14 +6,20 @@ import InputField from "../components/InputField";
 export default class HomeScreen extends Component{
     constructor(props) {
         super(props);
+
+        this.pressOnSend = this.pressOnSend.bind(this)
+    }
+
+    pressOnSend() {
+        let inputFirstName = this.inputFirstName;
+        if (inputFirstName) inputFirstName.setErrorMsg("error");
     }
 
     render() {
         return (
             <View style={styles.container}>
-                <ScrollView
-                    style={styles.container}
-                    contentContainerStyle={styles.contentContainer}>
+                <ScrollView style={styles.container}
+                            contentContainerStyle={styles.contentContainer}>
                     <View style={styles.headerContainer}>
                         <Image
                             source={
@@ -26,8 +32,8 @@ export default class HomeScreen extends Component{
                     </View>
 
                     <View style={styles.mainContent}>
-
-                        <InputField name={'First Name'} placeholder={'Enter first name'}/>
+                        <InputField name={'First Name'} placeholder={'Enter first name'}
+                                    ref={component => this.inputFirstName = component}/>
 
                         <View style={styles.buttons}>
                             <Button
@@ -38,17 +44,13 @@ export default class HomeScreen extends Component{
                             <Button
                                 title="Send"
                                 style={styles.sendBtn}
+                                onPress={this.pressOnSend}
                             />
                         </View>
                     </View>
                 </ScrollView>
             </View>
         );
-    }
-
-    pressOnSend() {
-        let inputFirstName = this.refs.inputFirstName;
-        console.log(inputFirstName)
     }
 }
 
