@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Input, Text} from 'react-native-elements';
-import {View} from "react-native";
+import {StyleSheet, View} from "react-native";
 
 export default class InputField extends Component {
     constructor(props) {
@@ -24,8 +24,8 @@ export default class InputField extends Component {
 
     render() {
         return (
-            <View ref='inputFirstName'>
-                <Text>{this.props.name}</Text>
+            <View style={styles.container}>
+                <Text style={styles.label}>{this.props.name}</Text>
                 <Input
                     placeholder={this.props.placeholder}
                     errorMessage={this.state.errorMsg}
@@ -35,3 +35,13 @@ export default class InputField extends Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        padding: 10
+    },
+
+    label: {
+        marginLeft: 10
+    }
+});
