@@ -8,14 +8,17 @@ export default class HomeScreen extends Component{
         super(props);
 
         this.pressOnSend = this.pressOnSend.bind(this)
-        this.pressOnClear = this.pressOnClear.bind(this)
+        this.clear = this.clear.bind(this)
     }
 
     pressOnSend() {
+
     }
 
-    pressOnClear() {
+    clear() {
         if (this.inputFirstName) this.inputFirstName.clear();
+        if (this.inputLastName) this.inputLastName.clear();
+        if (this.inputAge) this.inputAge.clear();
     }
 
     render() {
@@ -39,11 +42,19 @@ export default class HomeScreen extends Component{
                                     placeholder={'Enter first name'}
                                     ref={el => this.inputFirstName = el}/>
 
+                        <InputField name={'Last Name'}
+                                    placeholder={'Enter last name'}
+                                    ref={el => this.inputLastName = el}/>
+
+                        <InputField name={'Age'}
+                                    placeholder={'Enter age'}
+                                    ref={el => this.inputAge = el}/>
+
                         <View style={styles.buttons}>
                             <Button
                                 title="Clear"
                                 style={styles.clearBtn}
-                                onPress={this.pressOnClear}
+                                onPress={this.clear}
                             />
 
                             <Button
@@ -58,8 +69,6 @@ export default class HomeScreen extends Component{
         );
     }
 }
-
-
 
 HomeScreen.navigationOptions = {
     header: null,
