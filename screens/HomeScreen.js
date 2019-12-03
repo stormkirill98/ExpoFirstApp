@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, ScrollView, View,} from 'react-native';
+import {Image, ScrollView, StyleSheet, View,} from 'react-native';
 import {Button, Input} from 'react-native-elements';
 
 export default function HomeScreen() {
