@@ -41,11 +41,13 @@ export default function HomeScreen() {
         </View>
     );
 
+    function pressOnSend() {
+        let inputFirstName = this.refs.inputFirstName;
+        console.log(inputFirstName)
+    }
 }
 
-function pressOnSend() {
 
-}
 
 HomeScreen.navigationOptions = {
     header: null,
