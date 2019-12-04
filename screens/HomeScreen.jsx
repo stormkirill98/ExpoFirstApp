@@ -16,7 +16,21 @@ export default class HomeScreen extends Component{
         if (!this.validate())
             return;
 
-        // send to backend
+        let bodyJSON = JSON.stringify({
+            "first_name": this.inputFirstName.getValue(),
+            "last_name": this.inputLastName.getValue(),
+            "age": this.inputAge.getValue()
+        });
+
+        fetch("http://localhost:8080/save", {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: bodyJSON}).then((response) => {
+            alert(response.statusText);
+        });
 
         this.clear();
     }
