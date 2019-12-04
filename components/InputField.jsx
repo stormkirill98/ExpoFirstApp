@@ -6,16 +6,26 @@ export default class InputField extends Component {
     constructor(props) {
         super(props);
 
+        this.value = '';
         this.state = {errorMsg: ''};
 
         this.setErrorMsg = this.setErrorMsg.bind(this);
         this.clear = this.clear.bind(this);
+        this.getValue = this.getValue.bind(this);
+    }
+
+    getValue() {
+        return this.value;
     }
 
     setErrorMsg(errorMsg) {
         this.setState({
             errorMsg: errorMsg
         })
+    }
+
+    clearErrorMsg() {
+        this.setErrorMsg("");
     }
 
     clear() {
@@ -30,6 +40,7 @@ export default class InputField extends Component {
                     placeholder={this.props.placeholder}
                     errorMessage={this.state.errorMsg}
                     ref={el => this.input = el}
+                    onChangeText={val => this.value = val}
                 />
             </View>
         );

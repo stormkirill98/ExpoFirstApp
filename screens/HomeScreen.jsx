@@ -7,18 +7,49 @@ export default class HomeScreen extends Component{
     constructor(props) {
         super(props);
 
-        this.pressOnSend = this.pressOnSend.bind(this)
-        this.clear = this.clear.bind(this)
+        this.pressOnSend = this.pressOnSend.bind(this);
+        this.clear = this.clear.bind(this);
+        this.validate = this.validate.bind(this)
     }
 
     pressOnSend() {
+        if (!this.validate())
+            return;
 
+        // send to backend
+
+        this.clear();
     }
 
     clear() {
         if (this.inputFirstName) this.inputFirstName.clear();
         if (this.inputLastName) this.inputLastName.clear();
         if (this.inputAge) this.inputAge.clear();
+    }
+
+    validate() {
+        let isValid = true;
+
+        if (this.inputFirstName.getValue() === '') {
+            this.inputFirstName.setErrorMsg("Can not be blank");
+            isValid = false;
+        } else this.inputFirstName.clearErrorMsg();
+
+        if (this.inputLastName.getValue() === '') {
+            this.inputLastName.setErrorMsg("Can not be blank");
+            isValid = false;
+        } else this.inputLastName.clearErrorMsg();
+
+        let age = this.inputAge.getValue();
+        if (age === '') {
+            this.inputAge.setErrorMsg("Can not be blank");
+            isValid = false;
+        } else if (isNaN(age)) {
+            this.inputAge.setErrorMsg("Should be digit");
+            isValid = false;
+        } else this.inputAge.clearErrorMsg();
+
+        return isValid;
     }
 
     render() {
